@@ -21,7 +21,7 @@ const BoMon = sequelize.define("bomons", {
   },
   idCoSo: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   
 });
