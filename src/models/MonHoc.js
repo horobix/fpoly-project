@@ -22,6 +22,15 @@ const MonHoc = sequelize.define("monhocs", {
     type: DataTypes.TINYINT,
     allowNull: false,
   },
+  anHien: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
+  },
+  ghiChu: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
 });
 MonHoc.sync({ alter: true });
 

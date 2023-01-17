@@ -18,7 +18,6 @@ const CaThi = sequelize.define("cathis", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  
 });
 CaThi.sync({ alter: true });
 
