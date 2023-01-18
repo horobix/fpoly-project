@@ -1,8 +1,8 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "./connect";
 
-const BoMon = sequelize.define("bomons", {
-    tenBoMon: {
+const Nganh = sequelize.define("nganh", {
+    tenNganh: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -16,14 +16,14 @@ const BoMon = sequelize.define("bomons", {
     },
     anHien: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: 1,
+        allowNull: true,
     },
-    idCoSo: {
-        type: DataTypes.STRING,
+    idBM: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 });
-BoMon.sync({ alter: true });
 
-export default BoMon;
+Nganh.sync({ alter: true });
+
+export default Nganh;

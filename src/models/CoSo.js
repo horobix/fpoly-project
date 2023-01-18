@@ -1,12 +1,13 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "./connect";
 
-const BoMon = sequelize.define("bomons", {
-    tenBoMon: {
+const CoSo = sequelize.define("cosos", {
+    maCoSo: {
         type: DataTypes.STRING,
+        primaryKey: true,
         allowNull: false,
     },
-    tenTat: {
+    tenCoSO: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -19,11 +20,12 @@ const BoMon = sequelize.define("bomons", {
         allowNull: false,
         defaultValue: 1,
     },
-    idCoSo: {
+    ghiChu: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
 });
-BoMon.sync({ alter: true });
 
-export default BoMon;
+CoSo.sync({ alter: true });
+
+export default CoSo;
