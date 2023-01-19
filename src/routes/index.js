@@ -1,5 +1,4 @@
 import { Router } from "express";
-import MonHoc from "../models/MonHoc";
 
 const indexRouter = Router();
 
