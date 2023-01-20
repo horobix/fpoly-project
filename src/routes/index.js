@@ -1,6 +1,9 @@
 import { Router } from "express";
 import User from "../models/User";
-
+import lichThi from "../models/lichThi";
+import kyThi from "../models/kyThi";
+import baocaoThi from "../models/baocaoThi";
+import hocKy from "../models/hocKy";
 const indexRouter = Router();
 
 indexRouter.get("/", async (req, res) => {
