@@ -26,6 +26,14 @@ const GiangVien = sequelize.define("giangviens", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  hinh: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  khongPhanGV2: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
   ghiChu: {
     type: DataTypes.TEXT,
     allowNull: true,

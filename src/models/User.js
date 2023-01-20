@@ -18,6 +18,10 @@ const User = sequelize.define("users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  hinh: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   role: {
     type: DataTypes.INTEGER,
     allowNull: false,
