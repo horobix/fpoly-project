@@ -4,7 +4,7 @@ const adminRouter = Router();
 
 
 adminRouter.get("/", async (req, res) => {
-    res.render("index");
+    res.render("admin");
 });
 
 
