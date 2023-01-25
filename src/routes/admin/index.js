@@ -1,14 +1,13 @@
 import { Router } from "express";
-import GiangVien from "../models/GiangVien";
+
 const adminRouter = Router();
+
 
 adminRouter.get("/", async (req, res) => {
     res.render("index");
 });
 
-adminRouter.get("/cathi", async (req, res) => {
-    res.render("admin/pages/cathi");
-});
+
 adminRouter.get("/users", async (req, res) => {
     res.render("admin/pages/users");
 });

@@ -1,9 +1,12 @@
 import { Router } from "express";
-import GiangVien from "../models/GiangVien";
+
+import {getNewGroup} from'../models/CaThi'
+
 const indexRouter = Router();
 
-indexRouter.get("/", async (req, res) => {
-  res.render("index");
+indexRouter.get("/", async ( req,res) => {
+  getNewGroup(req,res)
+  // res.render("index");
 });
 
 export default indexRouter;
