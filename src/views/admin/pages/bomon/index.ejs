@@ -70,22 +70,42 @@
                                 <tr class="text-info">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Tên ca thi</th>
+                                    <th scope="col">Tên bộ môn</th>
+                                    <th scope="col">Tên tắt</th>
                                     <th scope="col">Thứ tự</th>
-                                    <th scope="col">Thời điểm</th>
-                                    
+                                    <th scope="col">Ẩn hiện</th>
+                                    <th scope="col">Cơ sở</th>
                                     <th scope="col">Sửa / Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                <tr>
+                                <% data.forEach(d => { %>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td><%= d.id %></td>
+                                        <td><%= d.tenBoMon %></td>
+                                        <td><%= d.tenTat %></td>
+                                        <td><%= d.thuTu %></td>
+                                        <td><%= (d.anHien == true) ? "Hiện" : "Ẩn" %></td>
+                                        <td><%= d.idCoSo %></td>
+                                        <td style="max-width: 70px;">
+                                            <a class="" href="/admin/bomon/suabomon/<%= d.id %>">
+                                                <button type="button" class="btn btn-square btn-success m-2"><i class="fa fa-edit"></i></button>
+                                            </a>
+                                            <a class="" href="/bomon/xoa/<%= d.id %>">
+                                                <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                                <!-- <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    
+                                    <td>1</td>
+                                    <td>Ứng dụng phần mềm</td>
+                                    <td>UDPM</td>
+                                    <td>1</td>
+                                    <td>Hiện</td>
+                                    <td>HCM</td>
                                     <td style="max-width: 70px;">
                                         <a class="" href="">
                                             <button type="button" class="btn btn-square btn-success m-2"><i class="fa fa-edit"></i></button>
@@ -94,7 +114,7 @@
                                             <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                                         </a>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
