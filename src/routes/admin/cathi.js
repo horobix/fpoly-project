@@ -12,6 +12,7 @@ adminCaThiRouter.get("/", async (req, res) => {
 adminCaThiRouter.get("/themcathi", async (req, res) => {
     res.render('admin/pages/cathi/formCaThi',{detailCaThi:false})
 });
+
 adminCaThiRouter.post("/themcathi", async (req, res) => {
     let data = req.body
     addCaThi(data,res)

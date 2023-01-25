@@ -6,8 +6,15 @@ import path from "path";
 
 // Routes importing
 import indexRouter from "./routes";
+
 import adminRouter from "./routes/admin";
+
 import adminCaThiRouter from "./routes/admin/cathi";
+import adminGiangVienRouter from "./routes/admin/giangvien";
+import adminUsers from "./routes/admin/users";
+import adminRules from "./routes/admin/rules";
+import adminMonhoc from "./routes/admin/monhoc";
+import adminBomon from "./routes/admin/bomon";
 
 // App initialization
 const app = express();
@@ -35,6 +42,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use("/", indexRouter);
 app.use("/admin", adminRouter,publicRouter);
 app.use("/admin/cathi",adminCaThiRouter,publicRouter)
+app.use("/admin/giangvien",adminGiangVienRouter,publicRouter)
+app.use("/admin/users",adminUsers,publicRouter)
+app.use("/admin/rules",adminRules,publicRouter)
+app.use("/admin/monhoc",adminMonhoc,publicRouter)
+app.use("/admin/bomon",adminBomon,publicRouter)
 // Routes Api
 
 
