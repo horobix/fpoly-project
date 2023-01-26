@@ -63,56 +63,56 @@
                     
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h2 style="text-transform: uppercase;" class="mb-4"><%=detailBoMon?'Sửa bộ môn':'Thêm bộ môn'%></h2>
+                            <h6 class="mb-4"><%=detailRule?'Sửa rule':'Thêm rule'%></h6>
                             <form
-                                action="<% if (detailBoMon) { %>
-                                    /admin/bomon/suabomon/<%=detailBoMon[0].id%>
+                                action="<% if (detailRule) { %>
+                                    /admin/rules/suaRule/<%=detailRule[0].id%>
                                 <% }else{ %>
-                                    /admin/bomon/thembomon
+                                    /admin/rules/themRule
                                 <%}%>"
                                  
                                 method="post"
                             >
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Tên bộ môn</label>
-                                    <input type="text" value="<%=detailBoMon?detailBoMon[0].tenBoMon:''%>" name="tenBoMon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text">
+                                    <label for="exampleInputEmail1" class="form-label">Tên rule</label>
+                                    <input type="text" value="<%=detailRule?detailRule[0].tenRule:''%>" name="tenRule" class="form-control" id="exampleInputEmail1">
+                                    <div class="form-text">
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Tên tắt</label>
-                                    <input type="text" value="<%=detailBoMon?detailBoMon[0].tenTat:''%>" name="tenTat" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                
-                                <% if(detailBoMon){ %>
-                                    <div class="mb-3">
-                                        <label for="floatingTextarea">Thứ tự</label>
-                                        <input type="text" value="<%=detailBoMon?detailBoMon[0].thuTu:''%>" name="thuTu" class="form-control" id="exampleInputPassword1">
-                                    </div>
-                                <% } %>
 
-                                <% if(detailBoMon){ %>
-                                    <div class="mb-3">
-                                        <label for="floatingTextarea">Cơ sở</label>
-                                        <input type="text" value="<%=detailBoMon?detailBoMon[0].idCoSo:''%>" name="idCoSo" class="form-control" id="exampleInputPassword1">
+
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Ẩn / Hiện</label>
+
+                                    <div class="d-flex ">
+                                        <div class="form-check me-5">
+                                            <input class="form-check-input" type="radio" name="enable" value="0" id="flexRadioDefault1"
+                                                <% if(detailRule){ %>
+                                                    <%=detailRule[0].enable==0?"checked":""%>
+                                                <% } %> >
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Ẩn
+                                            </label>
+                                        </div>
+                                        <div class="form-check ms-5">
+                                            <input class="form-check-input" type="radio" name="enable" value="1" id="flexRadioDefault2"
+                                                <% if(detailRule){ %>
+                                                    <%=detailRule[0].enable==1?"checked":"" %>
+                                                <% } %> >
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Hiện
+                                            </label>
+                                        </div>
                                     </div>
-                                <% } %>
-                                <% if(detailBoMon){ %>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anHien" value="0" id="flexRadioDefault1" <%= detailBoMon[0].anHien == 0?"checked":""  %>>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Ẩn
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anHien" value="1" id="flexRadioDefault2" <%= detailBoMon[0].anHien == 1?"checked":""  %>>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                      Hiện
-                                    </label>
-                                  </div>
-                                  <% } %>
+
+                                </div>
                                 
-                                <button type="submit" class="btn btn-primary">Thêm</button>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" name="ghiChu" placeholder="Ghi chú" id="floatingTextarea" style="height: 150px;"><%=detailRule?detailRule[0].ghiChu:''%></textarea>
+                                    <label for="floatingTextarea">Ghi chú</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Lưu</button>
                             </form>
                         </div>
                     </div>
