@@ -22,7 +22,6 @@ const CaThi = sequelize.define("cathis", {
 CaThi.sync({ alter: true });
 
 export const getListCaThi = (req, res, idCaThi) => {
-    
     if (idCaThi) {
         CaThi.findAll({
             where: {
@@ -30,7 +29,6 @@ export const getListCaThi = (req, res, idCaThi) => {
             },
         })
             .then((data) => {
-                
                 res.render("admin/pages/cathi/formCaThi", { detailCaThi: data });
             })
             .catch((err) => {
@@ -52,7 +50,6 @@ export const addCaThi = async (data, res) => {
     data["thuTu"] = thuTu + 1;
     CaThi.create(data)
         .then((dataAdd) => {
-            
             res.redirect("/admin/cathi");
         })
         .catch((err) => {
@@ -67,7 +64,6 @@ export const upDateCaThi = (data, res, id) => {
         },
     })
         .then((dataAdd) => {
-            
             res.redirect("/admin/cathi");
         })
         .catch((err) => {
@@ -75,8 +71,7 @@ export const upDateCaThi = (data, res, id) => {
         });
 };
 
-export const deleteCaThi = ( res, id) => {
-    
+export const deleteCaThi = (res, id) => {
     CaThi.destroy({
         where: {
             id: id,
