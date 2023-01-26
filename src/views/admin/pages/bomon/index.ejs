@@ -92,7 +92,7 @@
                                             <a class="" href="/admin/bomon/suabomon/<%= d.id %>">
                                                 <button type="button" class="btn btn-square btn-success m-2"><i class="fa fa-edit"></i></button>
                                             </a>
-                                            <a class="" href="/bomon/xoa/<%= d.id %>">
+                                            <a class="deleteItem" href="bomon/xoa/<%= d.id %>" idItem="<%=d.id%>">
                                                 <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                                             </a>
                                         </td>
@@ -167,3 +167,19 @@
 </body>
 
 </html>
+
+<script>
+    let deleteItem = document.querySelectorAll('.deleteItem');
+    deleteItem.forEach(b => {
+        let idItem = b.getAttribute('idItem');
+        console.log(idItem);
+
+        b.onclick = (event) => {
+            event.preventDefault();
+
+            let ok = 'Bạn có muốn xóa dữ liệu này?';
+            if(!confirm(ok)) return
+            location.href = `/admin/bomon/xoa/${idItem}`;
+        }
+    })
+</script>

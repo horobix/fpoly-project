@@ -97,7 +97,7 @@
                                         <input type="text" value="<%=detailBoMon?detailBoMon[0].idCoSo:''%>" name="idCoSo" class="form-control" id="exampleInputPassword1">
                                     </div>
                                 <% } %>
-                                
+                                <% if(detailBoMon){ %>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="anHien" value="0" id="flexRadioDefault1" <%= detailBoMon[0].anHien == 0?"checked":""  %>>
                                     <label class="form-check-label" for="flexRadioDefault1">
@@ -110,6 +110,7 @@
                                       Hiện
                                     </label>
                                   </div>
+                                  <% } %>
                                 
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </form>
