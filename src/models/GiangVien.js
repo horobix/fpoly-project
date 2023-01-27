@@ -2,15 +2,15 @@ import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "./connect";
 
 const GiangVien = sequelize.define("giangviens", {
-  ho: {
+  hoGV: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  ten: {
+  tenGV: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
+  emailGV: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -19,19 +19,19 @@ const GiangVien = sequelize.define("giangviens", {
     allowNull: false,
   },
   isCoHuu: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   cacMonDay: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  hinh: {
+  hinhGV: {
     type: DataTypes.STRING,
     allowNull: true,
   },
   khongPhanGV2: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   ghiChu: {
@@ -40,5 +40,6 @@ const GiangVien = sequelize.define("giangviens", {
   },
 });
 GiangVien.sync({ alter: true });
+
 
 export default GiangVien;
