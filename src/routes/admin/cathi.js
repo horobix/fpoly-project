@@ -1,37 +1,40 @@
 import { Router } from "express";
-import { getListCaThi,addCaThi,upDateCaThi,deleteCaThi } from "../../models/CaThi";
+import CaThi from "../../models/CaThi";
+import { getList,addIntoTable,getOne,updateInTable,deleteInTable } from "../../models/query";
 
 
 const adminCaThiRouter = Router();
 
 
 adminCaThiRouter.get("/", async (req, res) => {
-    getListCaThi(req,res)
+    getList(CaThi,res,"admin/pages/cathi")
 });
 
 adminCaThiRouter.get("/themcathi", async (req, res) => {
-    res.render('admin/pages/cathi/formCaThi',{detailCaThi:false})
+    res.render('admin/pages/cathi/formCaThi',{data:false})
 });
 
 adminCaThiRouter.post("/themcathi", async (req, res) => {
     let data = req.body
-    addCaThi(data,res)
+    addIntoTable(CaThi,data,res,"/admin/cathi")
+    
 });
 
 adminCaThiRouter.get("/suacathi/:id", async (req, res) => {
     let id = req.params.id
-    getListCaThi(req,res,id)
+    getOne(CaThi,id,res,"admin/pages/cathi/formCaThi")
+    // getListCaThi(req,res,id)
 });
 adminCaThiRouter.post("/suacathi/:id", async (req, res) => {
     let id = req.params.id
     let data = req.body
-    
-    upDateCaThi(data,res,id)
+    updateInTable(CaThi,data,id,res,"/admin/cathi")
+    // upDateCaThi(data,res,id)
 });
 
 adminCaThiRouter.get('/xoa/:id', async (req, res) => {
     let id = req.params.id
-    deleteCaThi(res,id)
+    deleteInTable(CaThi,res,id,"/admin/cathi")
 })
 
 

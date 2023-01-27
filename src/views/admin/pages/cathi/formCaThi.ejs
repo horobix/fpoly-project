@@ -63,10 +63,10 @@
                     
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4"><%=detailCaThi?'Sửa ca thi':'Thêm ca thi'%></h6>
+                            <h6 class="mb-4"><%=data?'Sửa ca thi':'Thêm ca thi'%></h6>
                             <form
-                                action="<% if (detailCaThi) { %>
-                                    /admin/cathi/suacathi/<%=detailCaThi[0].id%>
+                                action="<% if (data) { %>
+                                    /admin/cathi/suacathi/<%=data[0].id%>
                                 <% }else{ %>
                                     /admin/cathi/themcathi
                                 <%}%>"
@@ -75,17 +75,17 @@
                             >
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Tên ca thi</label>
-                                    <input type="text" value="<%=detailCaThi?detailCaThi[0].tenCaThi:''%>" name="tenCaThi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="text" value="<%=data?data[0].tenCaThi:''%>" name="tenCaThi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <div id="emailHelp" class="form-text">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Thời điểm</label>
-                                    <input type="text" value="<%=detailCaThi?detailCaThi[0].thoiDiem:''%>" name="thoiDiem" class="form-control" id="exampleInputPassword1">
+                                    <input type="text" value="<%=data?data[0].thoiDiem:''%>" name="thoiDiem" class="form-control" id="exampleInputPassword1">
                                 </div>
                                 
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" value="<%=detailCaThi?detailCaThi[0].ghiChu:''%>" name="ghiChu" placeholder="Ghi chú" id="floatingTextarea" style="height: 150px;"></textarea>
+                                    <textarea class="form-control" value="<%=data?data[0].ghiChu:''%>" name="ghiChu" placeholder="Ghi chú" id="floatingTextarea" style="height: 150px;"></textarea>
                                     <label for="floatingTextarea">Ghi chú</label>
                                 </div>
                                 

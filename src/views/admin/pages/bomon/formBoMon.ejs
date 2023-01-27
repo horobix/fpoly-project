@@ -63,10 +63,10 @@
                     
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h2 style="text-transform: uppercase;" class="mb-4"><%=detailBoMon?'Sửa bộ môn':'Thêm bộ môn'%></h2>
+                            <h2 style="text-transform: uppercase;" class="mb-4"><%=data?'Sửa bộ môn':'Thêm bộ môn'%></h2>
                             <form
-                                action="<% if (detailBoMon) { %>
-                                    /admin/bomon/suabomon/<%=detailBoMon[0].id%>
+                                action="<% if (data) { %>
+                                    /admin/bomon/suabomon/<%=data[0].id%>
                                 <% }else{ %>
                                     /admin/bomon/thembomon
                                 <%}%>"
@@ -75,37 +75,37 @@
                             >
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Tên bộ môn</label>
-                                    <input type="text" value="<%=detailBoMon?detailBoMon[0].tenBoMon:''%>" name="tenBoMon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="text" value="<%=data?data[0].tenBoMon:''%>" name="tenBoMon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <div id="emailHelp" class="form-text">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Tên tắt</label>
-                                    <input type="text" value="<%=detailBoMon?detailBoMon[0].tenTat:''%>" name="tenTat" class="form-control" id="exampleInputPassword1">
+                                    <input type="text" value="<%=data?data[0].tenTat:''%>" name="tenTat" class="form-control" id="exampleInputPassword1">
                                 </div>
                                 
-                                <% if(detailBoMon){ %>
+                                <% if(data){ %>
                                     <div class="mb-3">
                                         <label for="floatingTextarea">Thứ tự</label>
-                                        <input type="text" value="<%=detailBoMon?detailBoMon[0].thuTu:''%>" name="thuTu" class="form-control" id="exampleInputPassword1">
+                                        <input type="text" value="<%=data?data[0].thuTu:''%>" name="thuTu" class="form-control" id="exampleInputPassword1">
                                     </div>
                                 <% } %>
 
-                                <% if(detailBoMon){ %>
+                                <% if(data){ %>
                                     <div class="mb-3">
                                         <label for="floatingTextarea">Cơ sở</label>
-                                        <input type="text" value="<%=detailBoMon?detailBoMon[0].idCoSo:''%>" name="idCoSo" class="form-control" id="exampleInputPassword1">
+                                        <input type="text" value="<%=data?data[0].idCoSo:''%>" name="idCoSo" class="form-control" id="exampleInputPassword1">
                                     </div>
                                 <% } %>
-                                <% if(detailBoMon){ %>
+                                <% if(data){ %>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anHien" value="0" id="flexRadioDefault1" <%= detailBoMon[0].anHien == 0?"checked":""  %>>
+                                    <input class="form-check-input" type="radio" name="anHien" value="0" id="flexRadioDefault1" <%= data[0].anHien == 0?"checked":""  %>>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                       Ẩn
                                     </label>
                                   </div>
                                   <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anHien" value="1" id="flexRadioDefault2" <%= detailBoMon[0].anHien == 1?"checked":""  %>>
+                                    <input class="form-check-input" type="radio" name="anHien" value="1" id="flexRadioDefault2" <%= data[0].anHien == 1?"checked":""  %>>
                                     <label class="form-check-label" for="flexRadioDefault2">
                                       Hiện
                                     </label>
