@@ -81,6 +81,11 @@ export const addIntoTable = async (table, data, res, url) => {
                     res.send("error: " + err);
                 });
                 break
+        // Code more in here 
+        // Case giangvien:
+                // break
+        // Case monhoc: 
+                // break
 
         default:
             res.redirect(url);
