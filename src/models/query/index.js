@@ -1,6 +1,6 @@
 // QUERY SELECT ALL
-import * as bcrypt from 'bcrypt';
-
+// import * as bcrypt from 'bcrypt';
+import * as bcrypt from "bcryptjs";
 
 export const getList = (table, res, url) => {
     table
@@ -58,15 +58,17 @@ export const addIntoTable = async (table, data, res, url) => {
             let id = await table.max("id");
             data["id"] = id + 1;
 
-            table.findOne({
-                where: {
-                    email: data.email,
-                },
-            })
+            table
+                .findOne({
+                    where: {
+                        email: data.email,
+                    },
+                })
                 .then((user) => {
                     if (!user) {
                         data.password = bcrypt.hashSync(data.password, 10);
-                        table.create(data)
+                        table
+                            .create(data)
                             .then(() => {
                                 res.redirect(url);
                             })
@@ -80,12 +82,12 @@ export const addIntoTable = async (table, data, res, url) => {
                 .catch((err) => {
                     res.send("error: " + err);
                 });
-                break
-        // Code more in here 
+            break;
+        // Code more in here
         // Case giangvien:
-                // break
-        // Case monhoc: 
-                // break
+        // break
+        // Case monhoc:
+        // break
 
         default:
             res.redirect(url);
