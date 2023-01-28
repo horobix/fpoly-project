@@ -2,7 +2,8 @@ import { Router } from "express";
 // import { getListUser, addUser, updateUser, deleteUser } from "../../models/User";
 import User from "../../models/User";
 import { getList,addIntoTable,getOne,updateInTable,deleteInTable } from "../../models/query";
-
+import addUser from "../../models/query/query-add/addUser";
+import updateUser from "../../models/query/query-update/updateUser";
 
 const adminUsers = Router();
 
@@ -17,9 +18,7 @@ adminUsers.get("/themuser", async (req, res) => {
 });
 
 adminUsers.post("/themuser", async (req, res) => {
-    let data = req.body;
-    addIntoTable(User,data,res,"/admin/users")
-    // addUser(data,res);
+    addUser(User, req, res,"/admin/users");
 });
 
 adminUsers.get("/suauser/:id", async (req, res) => {
@@ -29,10 +28,8 @@ adminUsers.get("/suauser/:id", async (req, res) => {
 });
 
 adminUsers.post("/suauser/:id", async (req, res) => {
-    let id = req.params.id
-    let data = req.body;
-    updateInTable(User,data,id,res,"/admin/users")
-    // updateUser(data,res,id);
+    let id = req.params.id;
+    updateUser(User,id, req, res,"/admin/users")
 });
 
 adminUsers.get("/xoauser/:id", async (req, res) => {
