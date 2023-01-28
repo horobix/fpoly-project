@@ -32,13 +32,14 @@ export const getOne = (table, id, res, url) => {
 // QUERY INSERT DATA
 export const addIntoTable = async (table, data, res, url) => {
     switch (true) {
-        case Boolean(data.tenCaThi):
+        case Boolean(data.tenCaThi):    // Thêm Ca Thi
             let thuTuCaThi = await table.max("thuTu");
             data["thuTu"] = thuTuCaThi + 1;
             await table.create(data);
             res.redirect(url);
             break;
-        case Boolean(data.tenBoMon):
+
+        case Boolean(data.tenBoMon):    // Thêm Bộ Môn
             let thuTuBoMon = await table.max("thuTu");
             data["thuTu"] = thuTuBoMon + 1;
             data["idCoSo"] = "hcm";
@@ -47,14 +48,14 @@ export const addIntoTable = async (table, data, res, url) => {
             res.redirect(url);
             break;
 
-        case Boolean(data.tenRule):
+        case Boolean(data.tenRule):     // Thêm Rules
             let thuTuRule = await table.max("thuTu");
             data["thuTu"] = thuTuRule + 1;
             await table.create(data);
             res.redirect(url);
             break;
 
-        case Boolean(data.email):
+        case Boolean(data.email):       // Thêm Users
             let id = await table.max("id");
             data["id"] = id + 1;
 
@@ -88,7 +89,6 @@ export const addIntoTable = async (table, data, res, url) => {
         // break
         // Case monhoc:
         // break
-
         default:
             res.redirect(url);
             break;
