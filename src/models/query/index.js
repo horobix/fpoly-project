@@ -1,6 +1,11 @@
 // QUERY SELECT ALL
 // import * as bcrypt from 'bcrypt';
-import * as bcrypt from "bcryptjs";
+
+import addCaThi from "./query-add/addCathi";
+import addBoMon from "./query-add/addBoMon";
+import addRule from "./query-add/addRule";
+import addUser from "./query-add/addUser";
+import addGiangVien from "./query-add/addGiangVien";
 
 export const getList = (table, res, url) => {
     table
@@ -32,67 +37,26 @@ export const getOne = (table, id, res, url) => {
 // QUERY INSERT DATA
 export const addIntoTable = async (table, data, res, url) => {
     switch (true) {
-        case Boolean(data.tenCaThi):    // Thêm Ca Thi
-            let thuTuCaThi = await table.max("thuTu");
-            data["thuTu"] = thuTuCaThi + 1;
-            await table.create(data);
-            res.redirect(url);
+        case Boolean(data.tenCaThi): // Thêm Ca Thi
+            addCaThi(table, data, res, url);
             break;
 
-        case Boolean(data.tenBoMon):    // Thêm Bộ Môn
-            let thuTuBoMon = await table.max("thuTu");
-            data["thuTu"] = thuTuBoMon + 1;
-            data["idCoSo"] = "hcm";
-            data["id"] = thuTuBoMon + 1;
-            await table.create(data);
-            res.redirect(url);
+        case Boolean(data.tenBoMon): // Thêm Bộ Môn
+            addBoMon(table, data, res, url);
             break;
 
-        case Boolean(data.tenRule):     // Thêm Rules
-            let thuTuRule = await table.max("thuTu");
-            data["thuTu"] = thuTuRule + 1;
-            await table.create(data);
-            res.redirect(url);
+        case Boolean(data.tenRule): // Thêm Rules
+            addRule(table, data, res, url);
             break;
 
-        case Boolean(data.email):       // Thêm Users
-            let id = await table.max("id");
-            data["id"] = id + 1;
+        case Boolean(data.email): // Thêm Users
+            addUser(table, data, res, url);
+            break;
 
-            table
-                .findOne({
-                    where: {
-                        email: data.email,
-                    },
-                })
-                .then((user) => {
-                    if (!user) {
-                        data.password = bcrypt.hashSync(data.password, 10);
-                        table
-                            .create(data)
-                            .then(() => {
-                                res.redirect(url);
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                            });
-                    } else {
-                        res.json({ error: "Email này đã được đăng ký" });
-                    }
-                })
-                .catch((err) => {
-                    res.send("error: " + err);
-                });
+        case Boolean(data.khongPhanGV2): //  Thêm Giảng Viên
+            addGiangVien(table, data, res, url);
             break;
-        // Code more in here
-        case Boolean(data.khongPhanGV2):
-                let idGV = await table.max("id");
-                data["id"] = idGV + 1;
-                await table.create(data);
-                res.redirect(url);
-            break;
-        // Case monhoc:
-        // break
+        // case more and break
         default:
             res.redirect(url);
             break;
