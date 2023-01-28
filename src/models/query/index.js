@@ -85,8 +85,12 @@ export const addIntoTable = async (table, data, res, url) => {
                 });
             break;
         // Code more in here
-        // Case giangvien:
-        // break
+        case Boolean(data.khongPhanGV2):
+                let idGV = await table.max("id");
+                data["id"] = idGV + 1;
+                await table.create(data);
+                res.redirect(url);
+            break;
         // Case monhoc:
         // break
         default:
