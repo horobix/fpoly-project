@@ -40,7 +40,6 @@ export const addIntoTable = async (table, data, res, url) => {
         case Boolean(data.tenCaThi): // Thêm Ca Thi
             addCaThi(table, data, res, url);
             break;
-
         case Boolean(data.tenBoMon): // Thêm Bộ Môn
             addBoMon(table, data, res, url);
             break;
