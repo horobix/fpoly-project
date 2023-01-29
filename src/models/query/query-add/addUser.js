@@ -3,32 +3,17 @@ import { IncomingForm } from "formidable";
 
 const addUser = async (table, req, res, url, id) => {
     const form = new IncomingForm();
-    form.parse(req, function (err, fields, files) {
+    form.parse(req, async (err, fields, files) => {
 
         if (id) {
-            table
-                .findOne({
-                    where: {
-                        id: id,
-                    },
-                })
-                .then(async (user) => {
-                    if (user) {
-                        let data = uploadDataUsers(fields, files);
+            let data = uploadDataUsers(fields, files);
 
-                        await table.update(data, {
-                            where: {
-                                id: id,
-                            },
-                        })
-                        res.redirect(url);
-
-                    }
-
-                })
-                .catch((err) => {
-                    res.send("error: " + err);
-                });
+            await table.update(data, {
+                where: {
+                    id: id,
+                },
+            })
+            res.redirect(url);
         } else {
             table
                 .findOne({
@@ -39,11 +24,11 @@ const addUser = async (table, req, res, url, id) => {
                 .then(async (user) => {
                     if (!user) {
                         let data = uploadDataUsers(fields, files);
+                        data.id = await table.max('id')+1;
                         await table.create(data);
                         res.redirect(url);
                     } else {
-                        alert('Email này đã được đăng ký');
-                        window.history.go(-1);
+                        res.send('<h1>Email này đã được đăng ký, vui lòng sử dụng email khác!</h1>');
                     }
                 })
                 .catch((err) => {
