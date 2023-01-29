@@ -1,54 +1,42 @@
-import * as bcrypt from "bcryptjs";
+import uploadDataUsers from "../query-uploadFile/uploadDataUser";
 import { IncomingForm } from "formidable";
-import * as fs from "fs";
-import path from "path";
 
-const addUser = async (table, req, res, url) => {
-    let id = await table.max("id");
-
+const addUser = async (table, req, res, url, id) => {
     const form = new IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        let data = {
-            id: id + 1,
-            ho: fields.ho,
-            ten: fields.ten,
-            email: fields.email,
-            password: fields.password,
-            hinh: files.hinh.originalFilename
-        }
-        let oldPath = files.hinh.filepath;
-        let newPath = path.join(__dirname, `../../../public/img/${data.hinh}`);
-        var rawData = fs.readFileSync(oldPath);
+    form.parse(req, async (err, fields, files) => {
 
-        table
-            .findOne({
+        if (id) {
+            let data = uploadDataUsers(fields, files);
+
+            await table.update(data, {
                 where: {
-                    email: data.email,
+                    id: id,
                 },
             })
-            .then((user) => {
-                if (!user) {
-                    data.password = bcrypt.hashSync(data.password, 10);
-                    console.log(newPath);
-                    console.log(data);
-                    table
-                        .create(data)
-                        .then(() => {
-                            fs.writeFile(newPath, rawData, (err) => (err) ? console.log(err) : '')
-                            res.redirect(url);
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
+            res.redirect(url);
+        } else {
+            table
+                .findOne({
+                    where: {
+                        email: fields.email,
+                    },
+                })
+                .then(async (user) => {
+                    if (!user) {
+                        let data = uploadDataUsers(fields, files);
+                        data.id = await table.max('id')+1;
+                        await table.create(data);
+                        res.redirect(url);
+                    } else {
+                        res.send('<h1>Email này đã được đăng ký, vui lòng sử dụng email khác!</h1>');
+                    }
+                })
+                .catch((err) => {
+                    res.send("error: " + err);
+                });
+        }
 
-                } else {
-                    alert('Email này đã được đăng ký');
-                    window.history.go(-1);
-                }
-            })
-            .catch((err) => {
-                res.send("error: " + err);
-            });
+
 
     });
 
