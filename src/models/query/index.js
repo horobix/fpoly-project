@@ -47,11 +47,6 @@ export const addIntoTable = async (table, data, res, url) => {
         case Boolean(data.tenRule): // Thêm Rules
             addRule(table, data, res, url);
             break;
-
-        case Boolean(data.email): // Thêm Users
-            addUser(table, data, res, url);
-            break;
-
         case Boolean(data.khongPhanGV2): //  Thêm Giảng Viên
             addGiangVien(table, data, res, url);
             break;

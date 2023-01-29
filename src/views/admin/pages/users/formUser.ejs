@@ -65,7 +65,7 @@
                                     /admin/users/suauser/<%=data[0].id%>
                                 <% }else{ %>
                                     /admin/users/themuser
-                                <%}%>" method="post">
+                                <%}%>" method="post" enctype="multipart/form-data">
 
                                     <div class="mb-3">
                                         <label class="form-label">Họ</label>
@@ -96,11 +96,14 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Hình ảnh</label>
-                                        <input type="text" value="<%=data?data[0].hinh:''%>" name="hinh"
-                                            class="form-control">
-                                        <div class="form-text">
-                                        </div>
+                                        <label for="formFile" class="form-label">Hình ảnh</label>
+                                        <% if (data) { %>
+                                            <div class="mb-3">
+                                                <input type="hidden" value="<%= data[0].hinh %>" name="hinhhientai">
+                                                <img  style="max-height: 100px;" class="rounded-circle" src="/img/<%= data[0].hinh %>" alt="">
+                                            </div>
+                                        <% } %>
+                                        <input class="form-control" type="file" name="hinh" id="formFile">
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Thêm</button>
