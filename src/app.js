@@ -16,6 +16,7 @@ import adminUsers from "./routes/admin/users";
 import adminRules from "./routes/admin/rules";
 import adminMonhoc from "./routes/admin/monhoc";
 import adminBomon from "./routes/admin/bomon";
+import adminKhuVuc from "./routes/admin/khuvuc";
 
 // App initialization
 const app = express();
@@ -44,6 +45,7 @@ app.use("/admin/users", adminUsers, publicRouter);
 app.use("/admin/rules", adminRules, publicRouter);
 app.use("/admin/monhoc", adminMonhoc, publicRouter);
 app.use("/admin/bomon", adminBomon, publicRouter);
+app.use("/admin/khuvuc", adminKhuVuc, publicRouter);
 // Routes Api
 
 app.listen(PORT, () => console.log(`App listening at port ${PORT}`));
