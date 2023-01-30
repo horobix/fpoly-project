@@ -6,6 +6,7 @@ import addBoMon from "./query-add/addBoMon";
 import addRule from "./query-add/addRule";
 import addUser from "./query-add/addUser";
 import addGiangVien from "./query-add/addGiangVien";
+import addNganh from "./query-add/addNganh";
 
 export const getList = (table, res, url) => {
     table
@@ -49,6 +50,9 @@ export const addIntoTable = async (table, data, res, url) => {
             break;
         case Boolean(data.khongPhanGV2): //  Thêm Giảng Viên
             addGiangVien(table, data, res, url);
+            break;
+        case Boolean(data.tenNganh): //  Thêm Ngành
+            addNganh(table, data, res, url);
             break;
         // case more and break
         default:
