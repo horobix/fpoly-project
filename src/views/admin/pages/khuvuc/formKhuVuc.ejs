@@ -65,6 +65,9 @@
                         <div class="bg-light rounded h-100 p-4">
                             <h2 style="text-transform: uppercase;" class="mb-4"><%=data?'Sửa khu vực':'Thêm khu vực'%></h2>
                             <form
+
+                                name="myForm"
+
                                 action="<% if (data) { %>
                                     /admin/khuvuc/suakhuvuc/<%=data[0].id%>
                                 <% }else{ %>
@@ -72,6 +75,8 @@
                                 <%}%>"
                                  
                                 method="post"
+
+                                onsubmit="return validateForm()"
                             >
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Tên khu vực</label>
@@ -198,6 +203,25 @@
     <script src="/lib/tempusdominus/js/moment.min.js"></script>
     <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script>
+        function validateForm() {
+  let name = document.forms["myForm"]["tenKhuVuc"].value;
+  let tenTat = document.forms["myForm"]["idKhuVuc"].value;
+  let idCoSo = document.forms["myForm"]["idCoSo"].value;
+  if (name == "") {
+    alert("Chưa điền tên khu vực.");
+    return false;
+  }
+  if (tenTat == "") {
+    alert("Chưa điền tên tắt.");
+    return false;
+  }
+  if (idCoSo == "") {
+    alert("Chưa chọn tên cơ sở.");
+    return false;
+  }
+}
+    </script>
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
