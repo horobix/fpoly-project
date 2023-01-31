@@ -25,13 +25,11 @@ adminNganh.post("/suanganh/:id", async (req, res) => {
   let id = req.params.id;
   let data = req.body;
   updateInTable(Nganh,data,id,res,"/admin/nganh")
-  // updateRule(data, res, id);
 });
 
 adminNganh.get("/xoa/:id", async (req, res) => {
   let id = req.params.id;
   deleteInTable(Nganh,res,id,"/admin/nganh")
-  // deleteRule(res, id);
 });
 
 export default adminNganh;

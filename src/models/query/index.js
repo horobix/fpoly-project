@@ -54,6 +54,9 @@ export const addIntoTable = async (table, data, res, url) => {
     case Boolean(data.tenKhuVuc): //  Thêm Khu Vực
       addKhuVuc(table, data, res, url);
       break;
+    case Boolean(data.tenNganh): //  Thêm Ngành
+        addKhuVuc(table, data, res, url);
+        break;
     // case more and break
     default:
       res.redirect(url);
