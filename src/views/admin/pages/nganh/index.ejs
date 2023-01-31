@@ -61,7 +61,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Danh sách Giảng Viên</h6>
+                        <h6 class="mb-0">Recent Salse</h6>
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive ">
@@ -70,39 +70,31 @@
                                 <tr class="text-info">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Họ và tên đệm</th>
-                                    <th scope="col">Tên</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Bộ Môn</th>
-                                    <th scope="col">Co Huu</th>
-                                    <th scope="col">Các Môn Dạy</th>
-                                    <th scope="col">Hình</th>
-                                    <th scope="col">Không Phân GV2</th>
-                                    <th scope="col">Ghi Chú</th>
+                                    <th scope="col">Tên Ngành</th>
+                                    <th scope="col">Tên tắt</th>
+                                    <th scope="col">Thứ tự</th>
+                                    <th scope="col">Ẩn / Hiện</th>
+                                    <th scope="col">ID Bộ Môn</th>
                                     
                                     <th scope="col">Sửa / Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% listData.forEach(gv => { %>
+                                <% listData.forEach(nganh => { %>
                                     <tr>
                                         <td><input class="form-check-input" type="checkbox"></td>
-                                        <td><%= gv.id %> </td>
-                                        <td><%= gv.hoGV %></td>
-                                        <td><%= gv.tenGV %></td>
-                                        <td><%= gv.emailGV %></td>
-                                        <td><%= gv.idBM %></td>
-                                        <td><%= (gv.isCoHuu==1) ? "Có" : "Không" %></td>
-                                        <td><%= gv.cacMonDay %></td>
-                                        <td><%= gv.hinhGV %></td>
-                                        <td><%= (gv.khongPhanGV2==1) ? "Có" : "Không" %></td>
-                                        <td><%= gv.ghiChu==null?'':gv.ghiChu %></td>
+                                        <td><%= nganh.id %> </td>
+                                        <td><%= nganh.tenNganh %></td>
+                                        <td><%= nganh.tenTat %></td>
+                                        <td><%= nganh.thuTu %></td>
+                                        <td><%= (nganh.anHien==true) ? "Hiện" : "Ẩn" %></td>
+                                        <td><%= nganh.idBM %></td>
                                         
                                         <td style="max-width: 70px;">
-                                            <a class="" href="/admin/giangvien/suagiangvien/<%=gv.id%>">
+                                            <a class="" href="/admin/nganh/suanganh/<%=nganh.id%>">
                                                 <button type="button" class="btn btn-square btn-success m-2"><i class="fa fa-edit"></i></button>
                                             </a>
-                                            <a class="deleteItem" href="" idItem="<%=gv.id%>">
+                                            <a class="deleteItem" href="" idItem="<%=nganh.id%>">
                                                 <button type="button" class=" btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                                             </a>
                                             
@@ -110,13 +102,13 @@
                                     </tr>
                                  
                                 <% }) %>
+                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <!-- Recent Sales End -->
-
             <script>
                 const deleteItemE = document.querySelectorAll('.deleteItem')
                 deleteItemE.forEach(e=>{
@@ -128,11 +120,12 @@
                         
                         let ok = 'Bạn có muốn xóa dữ liệu này'
                         if(!confirm(ok)) return
-                        location.href=`/admin/giangvien/xoa/${idItem}`
+                        location.href=`/admin/nganh/xoa/${idItem}`
                     }
                 })
                 
             </script>
+
             
 
 
