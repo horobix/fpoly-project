@@ -4,10 +4,9 @@ import sequelize from "./connect";
 const CoSo = sequelize.define("cosos", {
     maCoSo: {
         type: DataTypes.STRING,
-        primaryKey: true,
         allowNull: false,
     },
-    tenCoSO: {
+    tenCoSo: {
         type: DataTypes.STRING,
         allowNull: false,
     },
