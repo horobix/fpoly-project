@@ -16,7 +16,7 @@ const ToaNha = sequelize.define("toanhas", {
     defaultValue: true,
   },
   idKhuVuc: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   ghiChu: {

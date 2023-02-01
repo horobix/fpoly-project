@@ -6,9 +6,9 @@ import addBoMon from "./query-add/addBoMon";
 import addRule from "./query-add/addRule";
 import addUser from "./query-add/addUser";
 import addGiangVien from "./query-add/addGiangVien";
-
 import addKhuVuc from "./query-add/addKhuVuc";
 import addNganh from "./query-add/addNganh";
+import addToaNha from "./query-add/addToaNha";
 
 export const getList = (table, res, url) => {
   table
@@ -43,6 +43,7 @@ export const addIntoTable = async (table, data, res, url) => {
     case Boolean(data.tenCaThi): // Thêm Ca Thi
       addCaThi(table, data, res, url);
       break;
+
     case Boolean(data.tenBoMon): // Thêm Bộ Môn
       addBoMon(table, data, res, url);
       break;
@@ -50,15 +51,23 @@ export const addIntoTable = async (table, data, res, url) => {
     case Boolean(data.tenRule): // Thêm Rules
       addRule(table, data, res, url);
       break;
+
     case Boolean(data.khongPhanGV2): //  Thêm Giảng Viên
       addGiangVien(table, data, res, url);
       break;
+
     case Boolean(data.tenKhuVuc): //  Thêm Khu Vực
       addKhuVuc(table, data, res, url);
       break;
+
     case Boolean(data.tenNganh): //  Thêm Ngành
       addNganh(table, data, res, url);
       break;
+
+    case Boolean(data.tenToaNha): //  Thêm Toà Nhà
+      addToaNha(table, data, res, url);
+      break;
+
     // case more and break
     default:
       res.redirect(url);
